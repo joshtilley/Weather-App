@@ -1,1 +1,1 @@
-Placeholder
+Weather App using WeatherAPI.
