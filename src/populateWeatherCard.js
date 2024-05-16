@@ -14,9 +14,14 @@ export function populate(weatherData) {
   country_div.innerText = weatherData.country;
 
   const icon_div = document.getElementById("icon");
+  if (document.getElementById("weather-icon")) {
+    let prevIcon = document.getElementById("weather-icon");
+    prevIcon.remove();
+  }
   const icon_png = document.createElement("img");
   icon_png.src = weatherData.icon;
   icon_png.alt = weatherData.status;
+  icon_png.id = "weather-icon";
   icon_div.append(icon_png);
 
   const status_div = document.getElementById("status");
@@ -51,14 +56,28 @@ export function populate(weatherData) {
 
   windUnits.innerHTML = Conversions["mph"];
 
-  // colours the card's border based on weather conditions
-  const card_div = document.querySelector(".card-main");
+  // colours card borders based on weather conditions
   const weatherColouring = colourCardBorder(weatherData);
+
+  const card_div = document.querySelector(".card-main");
   card_div.style.setProperty("border-image", weatherColouring.mainGradient);
+
   const optionsCard_div = document.querySelector(".options-card");
   optionsCard_div.style.setProperty(
     "border-color",
     Colours.cloud[weatherColouring.cloudCoverage]
+  );
+
+  const headerCard_div = document.querySelector(".title-card");
+  headerCard_div.style.setProperty(
+    "border-color",
+    Colours.cloud[weatherColouring.cloudCoverage]
+  );
+
+  const cardDivider_div = document.querySelector(".divider");
+  cardDivider_div.style.setProperty(
+    "background-color",
+    Colours.is_day[weatherColouring.nightOrDay]
   );
 }
 
@@ -71,7 +90,7 @@ const Colours = {
   },
   /* night or day colouring */
   is_day: {
-    0: `hsl(258, 56%, 19%)`,
+    0: `hsl(258, 56%, 25%)`,
     1: `hsl(50, 100%, 79%)`,
     2: `hsl(50, 100%, 50%)`,
   },
@@ -87,11 +106,11 @@ function colourCardBorder(weatherData) {
   } else {
     cloudCoverage = 2;
   }
-  if (cloudCoverage === 0) nightOrDay = 2;
+  if (cloudCoverage === 0 && nightOrDay === 1) nightOrDay = 2;
   let gradient = `linear-gradient(
     to top,
     ${Colours.cloud[cloudCoverage]} 60%,
     ${Colours.is_day[nightOrDay]}
   ) 1`;
-  return { mainGradient: gradient, cloudCoverage };
+  return { mainGradient: gradient, cloudCoverage, nightOrDay };
 }

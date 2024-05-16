@@ -3,10 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title</title>
+    <title>Weather</title>
+    <script
+      src="https://kit.fontawesome.com/6c33c73c9a.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- Body -->
+    <header class="flex-center">
+      <div class="card title-card">
+        <h1>Weather App</h1>
+        <div class="form-container">
+          <h3>Enter a location:</h3>
+          <div class="searchbar" id="location-input">
+            <input
+              type="text"
+              name="location"
+              id="location"
+              placeholder="Nottingham"
+            />
+            <button id="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
     <main class="flex-center">
       <div class="card-container flex-center">
         <div class="card card-main">
@@ -78,9 +101,5 @@
         </div>
       </div>
     </main>
-    <!--     <div class="test-form">
-      <input type="text" id="location" placeholder="london" />
-      <button id="test-Btn">Click Me</button>
-    </div> -->
   </body>
 </html>

@@ -21,6 +21,7 @@
   background-color: transparent;
 }
 
+h1,
 h2,
 h3,
 input {
@@ -34,16 +35,76 @@ input {
 }
 
 body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   height: inherit;
-  margin: 0;
+  margin: 0 5%;
   padding: 0;
   background-color: var(--background-color);
   font-family: "WorkSans";
   color: var(--main-text-color);
 }
 
+@media only screen and (max-width: 847px) {
+  body {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.title-card {
+  padding: 15px;
+  -webkit-box-shadow: 0px 0px 20px 1px rgba(240, 240, 240, 0.3);
+  -moz-box-shadow: 0px 0px 20px 1px rgba(240, 240, 240, 0.3);
+  box-shadow: 0px 0px 20px 1px rgba(240, 240, 240, 0.3);
+}
+
+.title-card h1 {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.title-card h3 {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+input[type="text"],
+button {
+  appearance: none;
+  border-style: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.searchbar {
+  box-sizing: border-box;
+  padding: 4px 7px;
+  border: 1px solid var(--main-text-color);
+  background-color: hsl(0, 0%, 20%);
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+#submit {
+  float: right;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
 main {
   height: inherit;
+}
+
+@media only screen and (max-width: 847px) {
+  main {
+    height: fit-content;
+  }
 }
 
 .card-container {
