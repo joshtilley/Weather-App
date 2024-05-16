@@ -1,18 +1,220 @@
+@font-face {
+  font-family: "WorkSans";
+  src: url(/src/font/WorkSans-VariableFont_wght.ttf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "WorkSans";
+  src: url(/src/font/WorkSans-Italic-VariableFont_wght.ttf);
+  font-style: italic;
+}
+
 :root {
   height: 100%;
   /* colours */
+  --background-color: hsl(0, 0%, 5%);
+  --main-text-color: hsl(0, 0%, 94%);
+}
+
+* {
+  background-color: transparent;
+}
+
+h2,
+h3,
+input {
+  margin: 0;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
-  width: 100%;
+  height: inherit;
   margin: 0;
   padding: 0;
+  background-color: var(--background-color);
+  font-family: "WorkSans";
+  color: var(--main-text-color);
 }
 
-.test-form {
-  position: absolute;
-  right: calc(50% - 30px);
-  width: 60px;
-  margin: 100px auto;
-  padding: 0;
+main {
+  height: inherit;
+}
+
+.card-container {
+  flex-direction: column;
+}
+
+.card {
+  background-color: hsl(0, 0%, 15%);
+  border-width: 3px;
+  border-style: solid;
+  width: 330px;
+}
+
+.card-main {
+  aspect-ratio: 1/1.55;
+  display: grid;
+  grid-template-rows: 1fr 3px 1.5fr;
+  -webkit-box-shadow: 0px 0px 20px 1px rgba(240, 240, 240, 0.3);
+  -moz-box-shadow: 0px 0px 20px 1px rgba(240, 240, 240, 0.3);
+  box-shadow: 0px 0px 20px 1px rgba(240, 240, 240, 0.3);
+}
+
+.card-header {
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.location {
+  text-align: center;
+}
+
+.card-header h2 {
+  font-size: 27px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.card-header h3 {
+  font-weight: 400;
+}
+
+.weather-icon img {
+  height: 100%;
+}
+
+.weather-status {
+  padding-bottom: 17px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.divider {
+  width: 70%;
+  height: 3px;
+  background-color: var(--main-text-color);
+  margin: auto;
+}
+
+.card-body {
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 27px 0;
+}
+
+.times,
+.temperature,
+.condition {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.time-element,
+.temp-element,
+.condition-element {
+  width: 40%;
+  padding: 0 20px;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  font-size: 1.1rem;
+}
+
+.data {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.units {
+  font-size: 1.3rem;
+}
+
+.options-card {
+  box-sizing: content-box;
+  margin-top: 15px;
+  padding: 15px 0;
+}
+
+.options-container {
+  padding: 0 30px;
+}
+
+.selectors {
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.selector-element {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 90px;
+}
+
+#selector-left {
+  text-align: left;
+}
+#selector-center {
+  text-align: center;
+}
+#selector-right {
+  text-align: right;
+}
+
+.units-selector {
+  appearance: none;
+  font-family: inherit;
+  font-size: 1em;
+  text-transform: lowercase;
+  text-decoration: underline transparent;
+  text-underline-offset: 4px;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  cursor: pointer;
+  transition: 0.45s ease;
+}
+
+#temp-units {
+  float: left;
+}
+
+#temp-units:hover {
+  text-decoration: underline var(--main-text-color);
+  transition: 0.45s ease;
+}
+
+#temp-units::before {
+  content: "celsius";
+}
+
+#temp-units:checked::before {
+  content: "fahrenheit";
+}
+
+#wind-units {
+  float: right;
+}
+
+#wind-units::before {
+  content: "mph";
+}
+
+#wind-units:checked::before {
+  content: "kmph";
+}
+
+#wind-units:hover {
+  text-decoration: underline var(--main-text-color);
+  transition: 0.45s ease;
 }
